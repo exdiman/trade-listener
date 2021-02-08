@@ -24,6 +24,10 @@ type Client struct {
 	Ctx context.Context
 }
 
+func NewClient(ctx context.Context) Client {
+	return Client{Ctx: ctx}
+}
+
 func (c Client) wssBaseUrl() string {
 	return "wss://api2.poloniex.com"
 }

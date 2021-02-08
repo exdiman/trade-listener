@@ -40,7 +40,7 @@ func main() {
 	var wg sync.WaitGroup
 
 	// получение сделок на бирже Binance
-	binanceClient := binance.Client{Ctx: ctx}
+	binanceClient := binance.NewClient(ctx)
 	binanceTradeCh, binanceDone := binanceClient.ListenTrades("BTC", "USDT")
 	wg.Add(1)
 	go func() {
@@ -56,7 +56,7 @@ func main() {
 	}()
 
 	// получение сделок на бирже Poloniex
-	poloniexClient := poloniex.Client{Ctx: ctx}
+	poloniexClient := poloniex.NewClient(ctx)
 	poloniexTradeCh, poloniexDone := poloniexClient.ListenTrades("USDT", "BTC")
 	wg.Add(1)
 	go func() {
